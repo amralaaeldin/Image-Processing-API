@@ -7,7 +7,7 @@ var express_1 = __importDefault(require("express"));
 var imgRoutes_1 = __importDefault(require("./imgRoutes"));
 var routes = express_1.default.Router();
 routes.get('/', function (req, res) {
-    res.send('Hello, World!');
+    res.send('Welcome to Image Processing API!');
 });
 routes.use('/image', imgRoutes_1.default);
 exports.default = routes;

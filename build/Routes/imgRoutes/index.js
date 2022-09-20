@@ -45,8 +45,9 @@ var fs_1 = require("fs");
 var path_1 = __importDefault(require("path"));
 var resolveParam_1 = __importDefault(require("./../../utils/resolveParam"));
 var checkParamsMW_1 = __importDefault(require("../../middleware/checkParamsMW"));
+var isExistMW_1 = __importDefault(require("../../middleware/isExistMW"));
 var routes = express_1.default.Router();
-routes.get('/', checkParamsMW_1.default, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+routes.get('/', checkParamsMW_1.default, isExistMW_1.default, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var basePath, width, height, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -57,7 +58,7 @@ routes.get('/', checkParamsMW_1.default, function (req, res) { return __awaiter(
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 4, , 5]);
-                if (!!(0, fs_1.statSync)('./output').isDirectory()) return [3 /*break*/, 3];
+                if (!!(0, fs_1.existsSync)('./output')) return [3 /*break*/, 3];
                 return [4 /*yield*/, fs_1.promises.mkdir('./output')];
             case 2:
                 _a.sent();
