@@ -2,11 +2,12 @@ import express from 'express';
 import sharp from 'sharp';
 import { promises as fsPromises, statSync } from 'fs';
 import path from 'path';
-import resolveParam from './../../utils/resolveParam'
+import resolveParam from './../../utils/resolveParam';
+import checkParams from '../../middleware/checkParamsMW';
 
 const routes = express.Router();
 
-routes.get('/', async (req, res) => {
+routes.get('/', checkParams, async (req, res) => {
   const basePath = './imgs';
   const width = resolveParam(req.query.width);
   const height = resolveParam(req.query.height);
@@ -17,7 +18,7 @@ routes.get('/', async (req, res) => {
     }
     sharp(`${basePath}/${req.query.filename}.jpg`)
       .resize({ width, height })
-      .toFile(`./output/${req.query.filename}.jpg`, (e, info) => {
+      .toFile(`./output/${req.query.filename}.jpg`, (e) => {
         if (e) return res.send(`Image ${req.query.filename}.jpg is not exist`);
         res.sendFile(path.resolve() + `/output/${req.query.filename}.jpg`);
       });

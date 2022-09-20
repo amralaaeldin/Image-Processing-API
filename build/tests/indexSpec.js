@@ -67,7 +67,7 @@ describe('Testing endpoint responses', function () {
             });
         })();
     });
-    it('gets the image endpoint', function (done) {
+    it('gets the image endpoint using filename query param', function (done) {
         (function () {
             return __awaiter(this, void 0, void 0, function () {
                 var response, e_2;
@@ -75,7 +75,7 @@ describe('Testing endpoint responses', function () {
                     switch (_a.label) {
                         case 0:
                             _a.trys.push([0, 2, , 3]);
-                            return [4 /*yield*/, request.get('/image')];
+                            return [4 /*yield*/, request.get('/image?filename=santamonica.jpg')];
                         case 1:
                             response = _a.sent();
                             expect(response.status).toBe(200);
@@ -84,6 +84,30 @@ describe('Testing endpoint responses', function () {
                         case 2:
                             e_2 = _a.sent();
                             done.fail(e_2);
+                            return [3 /*break*/, 3];
+                        case 3: return [2 /*return*/];
+                    }
+                });
+            });
+        })();
+    });
+    it('ensures err when missing filename query param in the image endpoint', function (done) {
+        (function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var response, e_3;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            _a.trys.push([0, 2, , 3]);
+                            return [4 /*yield*/, request.get('/image')];
+                        case 1:
+                            response = _a.sent();
+                            expect(response.status).toBe(422);
+                            done();
+                            return [3 /*break*/, 3];
+                        case 2:
+                            e_3 = _a.sent();
+                            done.fail(e_3);
                             return [3 /*break*/, 3];
                         case 3: return [2 /*return*/];
                     }
