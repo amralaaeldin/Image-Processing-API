@@ -75,7 +75,7 @@ describe('Testing endpoint responses', function () {
                     switch (_a.label) {
                         case 0:
                             _a.trys.push([0, 2, , 3]);
-                            return [4 /*yield*/, request.get('/image?filename=santamonica.jpg')];
+                            return [4 /*yield*/, request.get('/image')];
                         case 1:
                             response = _a.sent();
                             expect(response.status).toBe(200);

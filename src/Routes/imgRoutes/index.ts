@@ -2,17 +2,15 @@ import express from 'express';
 import sharp from 'sharp';
 import { promises as fsPromises, statSync } from 'fs';
 import path from 'path';
+import resolveParam from './../../utils/resolveParam'
 
 const routes = express.Router();
 
 routes.get('/', async (req, res) => {
   const basePath = './imgs';
-  const width = req.query.width
-    ? parseInt(req.query.width as unknown as string)
-    : undefined;
-  const height = req.query.height
-    ? parseInt(req.query.height as unknown as string)
-    : undefined;
+  const width = resolveParam(req.query.width);
+  const height = resolveParam(req.query.height);
+
   try {
     if (!statSync('./output').isDirectory()) {
       await fsPromises.mkdir('./output');
