@@ -42,9 +42,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var supertest_1 = __importDefault(require("supertest"));
 var index_1 = __importDefault(require("./../index"));
 var request = (0, supertest_1.default)(index_1.default);
-// works
 describe('Testing endpoint responses', function () {
-    it('gets the api endpoint', function (done) {
+    it('gets the root endpoint', function (done) {
         (function () {
             return __awaiter(this, void 0, void 0, function () {
                 var response, e_1;
@@ -56,12 +55,35 @@ describe('Testing endpoint responses', function () {
                         case 1:
                             response = _a.sent();
                             expect(response.status).toBe(200);
-                            console.log(done.fail);
                             done();
                             return [3 /*break*/, 3];
                         case 2:
                             e_1 = _a.sent();
                             done.fail(e_1);
+                            return [3 /*break*/, 3];
+                        case 3: return [2 /*return*/];
+                    }
+                });
+            });
+        })();
+    });
+    it('gets the image endpoint', function (done) {
+        (function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var response, e_2;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            _a.trys.push([0, 2, , 3]);
+                            return [4 /*yield*/, request.get('/image?filename=santamonica.jpg')];
+                        case 1:
+                            response = _a.sent();
+                            expect(response.status).toBe(200);
+                            done();
+                            return [3 /*break*/, 3];
+                        case 2:
+                            e_2 = _a.sent();
+                            done.fail(e_2);
                             return [3 /*break*/, 3];
                         case 3: return [2 /*return*/];
                     }
