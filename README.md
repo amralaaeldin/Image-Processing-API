@@ -24,10 +24,10 @@ _Image Processing API_ is project that provides endpoints you can easily get ima
 
 ### GET
 
-`welcome page`                                       /
-`resize image to certain height and width`           /image?filename={imageName}&width={width}&height={height}
-`resize image to certain width and suitable height`  /image?filename={imageName}&width={width}
-`resize image to certain height and suitable width`  /image?filename={imageName}&height={height}
+- `welcome page`                                       / <br/>
+- `resize image to certain height and width`           /image?filename={imageName}&width={width}&height={height} <br/>
+- `resize image to certain width and suitable height`  /image?filename={imageName}&width={width} <br/>
+- `resize image to certain height and suitable width`  /image?filename={imageName}&height={height} <br/>
 
 ### Parameters
 
