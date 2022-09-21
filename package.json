@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
-    "lint": "eslint src/index.ts",
+    "lint": "eslint src/**/*.ts",
     "prettier": "prettier --config .prettierrc src/**/*.ts --write",
     "clean": "npm run prettier && npm run lint",
     "jasmine": "jasmine",
