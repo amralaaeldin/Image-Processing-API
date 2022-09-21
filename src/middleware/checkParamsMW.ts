@@ -5,7 +5,7 @@ export default function checkParams(
   req: express.Request,
   res: express.Response,
   next: Function
-) {
+) : void | express.Response {
   if (!req.query.filename)
     return res
       .status(422)

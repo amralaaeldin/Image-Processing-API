@@ -7,7 +7,7 @@ export default function isExist(
   req: express.Request,
   res: express.Response,
   next: Function
-) {
+) : void | express.Response {
   if (
     existsSync('./output') &&
     existsSync(`./output/${req.query.filename}.jpg`)
