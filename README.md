@@ -8,6 +8,7 @@ _Image Processing API_ is project that provides endpoints you can easily get ima
 
 - Open CMD
 - Write command 'git clone https://github.com/amralaaeledin/Image-Processing-API.git'
+- Write command 'cd Image-Processing-API'
 - Write command 'npm install'
 - Write command 'npm run build'
 - Write command 'node ./build'
