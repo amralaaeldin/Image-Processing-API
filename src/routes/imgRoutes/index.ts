@@ -8,29 +8,34 @@ import isExist from '../../middleware/isExistMW';
 
 const routes = express.Router();
 
-routes.get('/', checkParams, isExist, async (req, res) => {
-  const imagePath = `./imgs/${req.query.filename}.jpg`;
-  const width = resolveParam(req.query.width);
-  const height = resolveParam(req.query.height);
+routes.get(
+  '/',
+  checkParams,
+  isExist,
+  async (req: express.Request, res: express.Response): Promise<void> => {
+    const imagePath = `./imgs/${req.query.filename}.jpg`;
+    const width = resolveParam(req.query.width);
+    const height = resolveParam(req.query.height);
 
-  try {
-    await makeIfNotExist('./output');
-    sharp(imagePath)
-      .resize({ width, height })
-      .toFile(
-        `./output/${req.query.filename}-w-${req.query.width}-h-${req.query.height}.jpg`,
-        (e) => {
-          if (e)
-            return res.send(`Image ${req.query.filename}.jpg is not exist`);
-          res.sendFile(
-            path.resolve() +
-              `/output/${req.query.filename}-w-${req.query.width}-h-${req.query.height}.jpg`
-          );
-        }
-      );
-  } catch (err) {
-    console.log(err);
+    try {
+      await makeIfNotExist('./output');
+      sharp(imagePath)
+        .resize({ width, height })
+        .toFile(
+          `./output/${req.query.filename}_${req.query.width}_${req.query.height}.jpg`,
+          (e) => {
+            if (e)
+              return res.send(`Image ${req.query.filename}.jpg is not exist`);
+            res.sendFile(
+              path.resolve() +
+                `/output/${req.query.filename}_${req.query.width}_${req.query.height}.jpg`
+            );
+          }
+        );
+    } catch (err) {
+      console.log(err);
+    }
   }
-});
+);
 
 export default routes;

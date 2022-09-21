@@ -11,12 +11,12 @@ export default function isExist(
   if (
     existsSync('./output') &&
     existsSync(
-      `./output/${req.query.filename}-w-${req.query.width}-h-${req.query.height}.jpg`
+      `./output/${req.query.filename}_${req.query.width}_${req.query.height}.jpg`
     )
   )
     return res.sendFile(
       path.resolve() +
-        `/output/${req.query.filename}-w-${req.query.width}-h-${req.query.height}.jpg`
+        `/output/${req.query.filename}_${req.query.width}_${req.query.height}.jpg`
     );
   next();
 }
