@@ -17,10 +17,17 @@ routes.get('/', checkParams, isExist, async (req, res) => {
     await makeIfNotExist('./output');
     sharp(imagePath)
       .resize({ width, height })
-      .toFile(`./output/${req.query.filename}.jpg`, (e) => {
-        if (e) return res.send(`Image ${req.query.filename}.jpg is not exist`);
-        res.sendFile(path.resolve() + `/output/${req.query.filename}.jpg`);
-      });
+      .toFile(
+        `./output/${req.query.filename}-w-${req.query.width}-h-${req.query.height}.jpg`,
+        (e) => {
+          if (e)
+            return res.send(`Image ${req.query.filename}.jpg is not exist`);
+          res.sendFile(
+            path.resolve() +
+              `/output/${req.query.filename}-w-${req.query.width}-h-${req.query.height}.jpg`
+          );
+        }
+      );
   } catch (err) {
     console.log(err);
   }

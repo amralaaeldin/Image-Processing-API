@@ -7,11 +7,16 @@ export default function isExist(
   req: express.Request,
   res: express.Response,
   next: Function
-) : void | express.Response {
+): void | express.Response {
   if (
     existsSync('./output') &&
-    existsSync(`./output/${req.query.filename}.jpg`)
+    existsSync(
+      `./output/${req.query.filename}-w-${req.query.width}-h-${req.query.height}.jpg`
+    )
   )
-    return res.sendFile(path.resolve() + `/output/${req.query.filename}.jpg`);
+    return res.sendFile(
+      path.resolve() +
+        `/output/${req.query.filename}-w-${req.query.width}-h-${req.query.height}.jpg`
+    );
   next();
 }

@@ -12,9 +12,9 @@ export default function checkParams(
       .send('Unprocessable Entity: missing filename url query param');
 
   if (req.query.width && !Number(req.query.width as string))
-    req.query.width = undefined
+    req.query.width = undefined;
 
   if (req.query.height && !Number(req.query.height as string))
-    req.query.height = undefined
+    req.query.height = undefined;
   next();
 }
